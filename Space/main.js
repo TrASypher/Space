@@ -32,7 +32,7 @@ function mainLoop(){
         physicsLoop(ships);
     }
     render(now, lastPhysicsFrameTime);
-
+    drawCursor1(50,50,mainContext);
     requestAnimationFrame(mainLoop);
 }
 
@@ -46,7 +46,7 @@ function physicsLoop(){
 
 function render(now, lastPhysicsFrameTime){
     let timeRenderDelta = now - lastPhysicsFrameTime;
-    mainContext.clearRect(0,0,resolution.x,resolution.y);
+    blackCanvas(mainCanvas , mainContext);
 
     drawShips(mainContext, ships, timeRenderDelta);
 
@@ -56,7 +56,6 @@ function drawShips(context, ships, timeRenderDelta){
     let ship;
     for (let i = 0; i < ships.length; i++){
         ship = ships[i];
-        mainContext.clearRect(0,0,resolution.x,resolution.y);
         mainContext.fillRect(ship.x , ship.y +100,50,50);
 
         context.save();
